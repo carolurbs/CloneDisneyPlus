@@ -8,6 +8,11 @@
         display: none;
         grid-template-columns: 1fr 1fr 1fr;
         gap:24px;
+
+        @media(max-width:768px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
         &--is-active{
             display: grid;
         }
@@ -31,12 +36,21 @@
             text-transform: uppercase;
             margin: 0 1vw;
             cursor: pointer;
-            border-bottom: 5px solid transparent ;
+            border-bottom: 5px solid transparent;
+
+            @media(max-width:768px){
+                white-space: nowrap;
+                overflow-x:scroll;
+                padding-left: 20px;
+        
+            }
 
             &--is-active{
-                border-bottom: 5px solid variaveis.$corTextoSecundario ;
-
-
+                border-color:variaveis.$corTextoSecundario;
+            }
+            @media(max-width:768px){
+                font-size: 16px;
+        
             }
         }
         }
