@@ -2,6 +2,22 @@ document.addEventListener('DOMContentLoaded', function(){
     const buttons= document.querySelectorAll('[data-tab-button]');
     const tabsContainer=document.querySelectorAll('[data-tab-id]')
     const questions=document.querySelectorAll('[data-faq-question]'); //FAQ
+    const heroSection= document.querySelector('.hero');
+   const alturaHero= heroSection.clientHeight;
+   window.addEventListener('scroll',function(){
+   const posicaoAtual= this.window.scrollY;
+   if(posicaoAtual<alturaHero)
+    {
+        ocultaElementosHeader();
+    }
+    else{
+        exibeElementosHeader();
+    }
+
+
+
+
+   });
     for(let i=0; i<buttons.length;i++){
         buttons[i].addEventListener('click', function(botao){
             const absAlvo=botao.target.dataset.tabButton;
@@ -25,9 +41,6 @@ function abreOuFechaResposta(elemento){
     const classe = 'faq__questions__item--is-open';
     const elementoPai= elemento.target.parentNode;
     elementoPai.classList.toggle(classe);
-
-
-
 }
 function removeBotaoAtivo(){
     const buttons= document.querySelectorAll('[data-tab-button]');
@@ -41,5 +54,14 @@ function escondeTodasAsAbas() {
     for(let i=0; i<tabsContainer.length;i++){
     tabsContainer[i].classList.remove('shows__list--is-active')
     }
+}
 
+function ocultaElementosHeader(){
+    const header=document.querySelector('header')
+    header.classList.add('header--is-hidden');
+}
+
+function exibeElementosHeader(){
+    const header=document.querySelector('header')
+    header.classList.remove('header--is-hidden');
 }
